@@ -54,6 +54,10 @@ Ex1_10_1: Ex1_10_1.cc
 	${CXX} ${CXXFLAGS}  Ex1_10_1.cc -o Ex1_10_1.o
 Ex1_10_3: Ex1_10_3.cc
 	${CXX} ${CXXFLAGS}  Ex1_10_3.cc -o Ex1_10_3.o
+unique_ptr_simple: unique_ptr_simple.cc
+	${CXX} ${CXXFLAGS}  unique_ptr_simple.cc -o unique_ptr_simple.o
+shared_ptr_simple: shared_ptr_simple.cc
+	${CXX} ${CXXFLAGS}  shared_ptr_simple.cc -o shared_ptr_simple.o
 
 
 
