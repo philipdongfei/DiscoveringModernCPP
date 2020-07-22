@@ -76,6 +76,15 @@ lambda_demo: lambda_demo.cc
 capture_lambda: capture_lambda.cc
 	${CXX} ${CXXFLAGS}  capture_lambda.cc -o capture_lambda.out
 
+variadic_temp: variadic_temp.cc
+	${CXX} ${CXXFLAGS}  variadic_temp.cc -o variadic_temp.out
+
+variadic_printf: variadic_printf.cc
+	${CXX} ${CXXFLAGS}  variadic_printf.cc -o variadic_printf.out
+
+forwarding_demo: forwarding_demo.cc
+	${CXX} ${CXXFLAGS}  forwarding_demo.cc -o forwarding_demo.out
+
 .PHONY: clean
 clean:
 	-rm edit ${objects}
