@@ -85,6 +85,24 @@ variadic_printf: variadic_printf.cc
 forwarding_demo: forwarding_demo.cc
 	${CXX} ${CXXFLAGS}  forwarding_demo.cc -o forwarding_demo.out
 
+Ex3_1: Ex3_1.cc
+	${CXX} ${CXXFLAGS}  Ex3_1.cc -o Ex3_1.out
+
+Ex3_2: Ex3_2.cc
+	${CXX} ${CXXFLAGS}  Ex3_2.cc -o Ex3_2.out
+
+Ex3_3_8: Ex3_3_8.cc
+	${CXX} ${CXXFLAGS}  Ex3_3_8.cc -o Ex3_3_8.out
+
+Ex3_4: Ex3_4.cc
+	${CXX} ${CXXFLAGS}  Ex3_4.cc -o Ex3_4.out
+
+Ex3_5_6: Ex3_5_6.cc
+	${CXX} ${CXXFLAGS}  Ex3_5_6.cc -o Ex3_5_6.out
+
+Ex3_11_12: Ex3_11_12.cc
+	${CXX} ${CXXFLAGS}  Ex3_11_12.cc -o Ex3_11_12.out
+
 .PHONY: clean
 clean:
 	-rm edit ${objects}
