@@ -27,12 +27,12 @@ inline void put_pixel(SDL_Surface* screen, int x, int y, uint32_t pixel)
 class julia_pixal
 {//TODO: 
 public:
-    julia_pixal(SDL_Surface* screen, int x, int y, int xdim, int ydim, 
+    julia_pixal(SDL_Surface* screen, complex<float> k, int x, int y, int xdim, int ydim, 
             int max_iter): screen(screen), max_iter(max_iter),iter(0),
-            c(x,y)
+            c(2.4f * float(x) / float(ydim), 2.4f * float(y) / float(ydim)), // scale proportiionally such that y=[-1.2, 1.2]
+            k(k)
     {
-        c *= 2.4f / static_cast<float>(ydim);
-        c -= complex<float>(1.2 * xdim / ydim + 0.5, 1.2);
+        c -= complex<float>(1.2 * xdim / ydim, 1.2);
         iterate();
     }
 
@@ -49,38 +49,43 @@ private:
     {
         complex<float> z= c;
         for (; iter < max_iter && norm(z) <= 4.0f; iter++)
-            z= z * z + c;
+            z= z * z + k;
     };
 
     SDL_Surface* screen;
     const int max_iter;
     int iter;
-    complex<float> c;
+    complex<float> c, k;
 
 };
 
 int main(int argc, char* argv[])
 {
-    const int max_iter = 30;
-    int xdim= 1000, ydim= 1000;
+    const int max_iter = 40;
+    int xdim= 800, ydim= 600;
     if (argc >= 3)
         xdim= atoi(argv[1]), ydim= atoi(argv[2]);
+    complex<float> k(-0.6, 0.6); // Cantor dust (?) // k(0.353, 0.288);
+    if (argc >= 5)
+        k.real(atof(argv[3])), k.imag(atof(argv[4]));
+
 
     sdl_check(SDL_Init(SDL_INIT_VIDEO) != -1);
     SDL_Surface* screen = SDL_SetVideoMode(xdim, ydim, 32, SDL_DOUBLEBUF); 
     sdl_check(screen);
-    SDL_WM_SetCaption("Mandelbrot's Apple Manikin",
-            "Mandelbrot's Apple Manikin");
+    SDL_WM_SetCaption("Julia Set",
+            "Julia Set");
 
     SDL_LockSurface(screen);
     for (int y= 0; y < ydim; y++)
         for (int x= 0; x < xdim; x++){
-            julia_pixal m(screen, x, y, xdim, ydim, max_iter);
+            julia_pixal m(screen, k, x, y, xdim, ydim, max_iter);
             put_pixel(screen, x, y, m.color());
         }
 
     SDL_UnlockSurface(screen);
     SDL_Flip(screen);
+    //SDL_SaveBMP(screen, "julia.bmp");
 
     bool run = true;
     while (run){
