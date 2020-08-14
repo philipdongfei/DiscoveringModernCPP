@@ -69,26 +69,24 @@ reduction_unroll_registers_example: reduction_unroll_registers_example.cc
 matrix_unroll_example: matrix_unroll_example.cc
 	${CXX} ${CXXUNROLLFLAGS}  matrix_unroll_example.cc -o matrix_unroll_example.out
 
-tuple_test: tuple_test.cc Tuple.hpp
-	${CXX} ${CXXFLAGS}  tuple_test.cc -o tuple_test.out
+type_traits_example: type_traits_example.cc
+	${CXX} ${CXXFLAGS} type_traits_example.cc -o type_traits_example.out
 
-function_example: function_example.cc Tuple.hpp
+Ex5_1: Ex5_1.cc 
+	${CXX} ${CXXFLAGS}  Ex5_1.cc -o Ex5_1.out
+
+function_example: function_example.cc 
 	${CXX} ${CXXFLAGS}  function_example.cc -o function_example.out
 
-ref_example: ref_example.cc Tuple.hpp
-	${CXX} ${CXXFLAGS}  ref_example.cc -o ref_example.out
+Ex5_2: Ex5_2.cc 
+	${CXX} ${CXXFLAGS}  Ex5_2.cc -o Ex5_2.out
 
-chrono_example: chrono_example.cc Tuple.hpp
-	${CXX} ${CXXFLAGS}  chrono_example.cc -o chrono_example.out
+Ex5_3: Ex5_3.cc 
+	${CXX} ${CXXFLAGS}  Ex5_3.cc -o Ex5_3.out
 
-Ex4_1: Ex4_1.cc Tuple.hpp
-	${CXX} ${CXXFLAGS}  Ex4_1.cc -o Ex4_1.out
+Ex5_4: Ex5_4.cc 
+	${CXX} ${CXXFLAGS}  Ex5_4.cc -o Ex5_4.out
 
-Ex4_2: Ex4_2.cc Tuple.hpp
-	${CXX} ${CXXFLAGS}  Ex4_2.cc -o Ex4_2.out
-
-Ex4_3: Ex4_3.cc
-	${CXX} ${CXXFLAGS} `sdl-config --cflags --libs`  Ex4_3.cc -o Ex4_3.out
 
 .PHONY: clean
 clean:
