@@ -3,7 +3,7 @@
 
 #include "mesher.hpp"
 
-struct systems {  };
+struct systems {  }; // modify struct name from system to systems
 
 systems discretize(const mesh& m);
 

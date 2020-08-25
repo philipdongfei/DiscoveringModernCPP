@@ -3,7 +3,7 @@
 #include "solver.hpp"
 #include "mesher.hpp"
 
-int main()
+int main(int argc, char* argv[])
 {
     mesh my_mesh;
     mesh_it(my_mesh);
